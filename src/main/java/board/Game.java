@@ -10,6 +10,7 @@ import java.util.Random;
 public class Game extends JPanel implements ActionListener {
 
     private final int RAND_POS = new Random().nextInt(Constants.BOARD_HEIGHT*Constants.BOARD_WIDTH/2);
+    Snake snake;
 
     Game(){
         //set refresh rate
@@ -31,12 +32,10 @@ public class Game extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawRect(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2,Constants.BODY_SIZE,Constants.BODY_SIZE);
-        double i = Math.random();
-        float colorCode = (float)i;
-        Color c = new Color(colorCode,colorCode,colorCode);
-        g.setColor(c);
-        g.fillRect(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2,Constants.BODY_SIZE,Constants.BODY_SIZE);
+        //start game
+        if(snake == null){
+            snake = new Snake(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2);
+        }
     }
 
     //bring screen to life
