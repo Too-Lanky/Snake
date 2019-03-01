@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 
@@ -14,7 +16,7 @@ public class Game extends JPanel implements ActionListener {
 
     Game(){
         //set refresh rate
-        Timer timer = new Timer(170, this);
+        Timer timer = new Timer(8, this);
         timer.start();
     }
 
@@ -36,6 +38,7 @@ public class Game extends JPanel implements ActionListener {
         if(snake == null){
             snake = new Snake(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2);
         }
+        snake.move(Direction.UP,g);
     }
 
     //bring screen to life
