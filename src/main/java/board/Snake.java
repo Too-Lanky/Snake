@@ -15,22 +15,27 @@ public class Snake {
     }
 
     public void move(Direction d,Graphics g){
+        BodyParts moveBodyPart = body.getFirst();
+
         switch(d) {
             case UP:
             for (BodyParts bodypart : body) {
-                bodypart.setY(bodypart.getY() - 1);
                 if (bodypart.equals(body.peekFirst())) {
+                    bodypart.setY(bodypart.getY() - 1);
                     draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
-                }
-                draw(g, Color.ORANGE, bodypart.getX(), bodypart.getY());
+                }else
+                draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
+                moveBodyPart = bodypart;
             }
             case DOWN:
+            BodyParts grow = body.getFirst();
                 for (BodyParts bodypart : body) {
                     bodypart.setY(bodypart.getY() + 1);
                     if (bodypart.equals(body.peekFirst())) {
                         draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                     }
-                    draw(g, Color.ORANGE, bodypart.getX(), bodypart.getY());
+                    draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
+                    moveBodyPart = bodypart;
                 }
             case LEFT:
                 for (BodyParts bodypart : body) {
@@ -38,7 +43,8 @@ public class Snake {
                     if (bodypart.equals(body.peekFirst())) {
                         draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                     }
-                    draw(g, Color.ORANGE, bodypart.getX(), bodypart.getY());
+                    draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
+                    moveBodyPart = bodypart;
                 }
             case RIGHT:
                 for (BodyParts bodypart : body) {
@@ -46,7 +52,8 @@ public class Snake {
                     if (bodypart.equals(body.peekFirst())) {
                         draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                     }
-                    draw(g, Color.ORANGE, bodypart.getX(), bodypart.getY());
+                    draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
+                    moveBodyPart = bodypart;
                 }
         }
     }
