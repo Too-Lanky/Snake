@@ -1,19 +1,19 @@
 package board;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
 
 public class Board {
-    private Food food = new Food();
-    private Snake snake = new Snake();
 
     private Board(){
         JFrame jFrame = new JFrame("Snake");
         jFrame.setVisible(true);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(dimension.width,dimension.height);
+        jFrame.setSize(Constants.BOARD_WIDTH,Constants.BOARD_HEIGHT);
+        jFrame.add(new Game());
+        jFrame.setResizable(false);
+        //jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
     }
-
 
     public static void main(String[] args){
         new Board();

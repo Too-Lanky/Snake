@@ -17,5 +17,4 @@ public class Snake {
 
     }
 
-    public void consumeFood()
 }

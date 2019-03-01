@@ -2,18 +2,20 @@ package board;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 
-public class Game extends JPanel {
+public class Game extends JPanel implements ActionListener {
 
-    private static Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-    Random random = new Random();
-    private final int BOARD_WIDTH = dimension.width;
-    private final int BOARD_HEIGHT = dimension.height;
-    private final int BODY_SIZE = 10;
-    private final int RAND_POS = random.nextInt(BOARD_HEIGHT*BOARD_WIDTH/2);
-    private final int DELAY = 140;
+    private final int RAND_POS = new Random().nextInt(Constants.BOARD_HEIGHT*Constants.BOARD_WIDTH/2);
+
+    Game(){
+        //set refresh rate
+        Timer timer = new Timer(170, this);
+        timer.start();
+    }
 
     public boolean outOfBounds(int x,int y){
         boolean hasCollided = false;
@@ -25,33 +27,20 @@ public class Game extends JPanel {
         return foodEaten;
     }
 
-    public void goUp(Direction d){
-
+    //work horse
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawRect(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2,Constants.BODY_SIZE,Constants.BODY_SIZE);
+        double i = Math.random();
+        float colorCode = (float)i;
+        Color c = new Color(colorCode,colorCode,colorCode);
+        g.setColor(c);
+        g.fillRect(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2,Constants.BODY_SIZE,Constants.BODY_SIZE);
     }
 
-    public void goRight(Direction d){
-
-    }
-
-    public void goLeft(Direction d){
-
-    }
-
-    public void goDown(Direction d){
-
-    }
-
-    public void move(){
-
-    }
-
-    public void makeFood(int z, int k){
-
-    }
-
-    public boolean gameOver(Snake snake){
-        boolean collided = false;
-
-        return collided;
+    //bring screen to life
+    public void actionPerformed(ActionEvent e) {
+        repaint();
     }
 }
