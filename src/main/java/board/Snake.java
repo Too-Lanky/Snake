@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 public class Snake {
-    private int x;
-    private int y;
     LinkedList<BodyParts> body;
 
     Snake(int x, int y){
@@ -65,7 +63,7 @@ public class Snake {
         }
     }
 
-    private void draw(Graphics g, Color c, int x, int y){
+    public void draw(Graphics g, Color c, int x, int y){
         g.drawRect(x,y,Constants.BODY_SIZE,Constants.BODY_SIZE);
         g.setColor(c);
         g.fillRect(x,y,Constants.BODY_SIZE,Constants.BODY_SIZE);

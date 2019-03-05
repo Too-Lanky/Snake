@@ -1,48 +1,16 @@
 package board;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.Random;
 
-
-public class Game extends JPanel implements ActionListener {
-
-    private final int RAND_POS = new Random().nextInt(Constants.BOARD_HEIGHT*Constants.BOARD_WIDTH/2);
-    Snake snake;
-
-    Game(){
-        //set refresh rate
-        Timer timer = new Timer(8, this);
-        timer.start();
-    }
-
-    public boolean outOfBounds(int x,int y){
-        boolean hasCollided = false;
-        return hasCollided;
-    }
-
-    public boolean numNumNum(int x, int y){
-        boolean foodEaten = false;
-        return foodEaten;
-    }
-
-    //work horse
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        //start game
-        if(snake == null){
-            snake = new Snake(Constants.BOARD_WIDTH/2,Constants.BOARD_HEIGHT/2);
-        }
-        snake.move(Direction.UP,g);
-    }
-
-    //bring screen to life
-    public void actionPerformed(ActionEvent e) {
-        repaint();
+public class Game {
+    public static void main(String[] args){
+        JFrame jFrame = new JFrame("Snake");
+        jFrame.setVisible(true);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setSize(Constants.BOARD_WIDTH,Constants.BOARD_HEIGHT);
+        jFrame.setResizable(false);
+        //jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
+        Session session = new Session(jFrame);
     }
 }
