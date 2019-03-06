@@ -1,9 +1,7 @@
 package board;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 
 
 public class Session extends KeyAdapter implements ActionListener {
@@ -16,14 +14,14 @@ public class Session extends KeyAdapter implements ActionListener {
         jFrame.addKeyListener(this);
         board.repaint();
         //set refresh rate
-        Timer timer = new Timer(8, this);
+        Timer timer = new Timer(700, this);
         timer.start();
 
     }
 
     //bring screen to life
     public void actionPerformed(ActionEvent e) {
-        board.update(board.getGraphics(),direction);
+        board.update(direction);
     }
 
     @Override

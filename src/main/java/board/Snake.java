@@ -18,19 +18,20 @@ public class Snake {
         switch(d) {
         case UP:
             for (BodyParts bodypart : body) {
+                System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
                 if (bodypart.equals(body.peekFirst())) {
-                    bodypart.setY(bodypart.getY() - 1);
+                    bodypart.setY(bodypart.getY() - 10);
                     draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                 }else {
                     draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
-                    moveBodyPart = bodypart;
                 }
             }
             break;
         case DOWN:
             for (BodyParts bodypart : body) {
+                System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
                 if (bodypart.equals(body.peekFirst())) {
-                    bodypart.setY(bodypart.getY() + 1);
+                    bodypart.setY(bodypart.getY() + 10);
                     draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                 }else {
                     draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
@@ -40,8 +41,9 @@ public class Snake {
             break;
         case LEFT:
             for (BodyParts bodypart : body) {
+                System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
                 if (bodypart.equals(body.peekFirst())) {
-                    bodypart.setX(bodypart.getX() - 1);
+                    bodypart.setX(bodypart.getX() - 10);
                     draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                 }else {
                     draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
@@ -51,8 +53,9 @@ public class Snake {
             break;
         case RIGHT:
             for (BodyParts bodypart : body) {
+                System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
                 if (bodypart.equals(body.peekFirst())) {
-                    bodypart.setX(bodypart.getX() + 1);
+                    bodypart.setX(bodypart.getX() + 10);
                     draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
                 }else {
                     draw(g, Color.ORANGE, moveBodyPart.getX(), moveBodyPart.getY());
@@ -70,6 +73,14 @@ public class Snake {
     }
 
     public void grow(BodyParts bodyPart){
-        body.addFirst(bodyPart);
+        body.addLast(new BodyParts(bodyPart.getX(),bodyPart.getY()));
+    }
+
+    public LinkedList<BodyParts> getBody() {
+        return body;
+    }
+
+    public BodyParts getHead(){
+        return body.getFirst();
     }
 }
