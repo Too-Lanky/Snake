@@ -1,4 +1,7 @@
-package board;
+package render;
+
+import constants.Constants;
+import constants.Direction;
 
 import java.awt.Graphics;
 import java.awt.Color;
@@ -12,7 +15,7 @@ public class Snake {
         body.add(new BodyPart(x,y));
     }
 
-    public void move(Direction d,Graphics g){
+    public void move(Direction d, Graphics g){
 
         switch(d) {
         case UP:
@@ -44,7 +47,7 @@ public class Snake {
     }
 
     public void draw(Graphics g, Color c, int x, int y){
-        g.drawRect(x,y,Constants.BODY_SIZE,Constants.BODY_SIZE);
+        g.drawRect(x,y, Constants.BODY_SIZE,Constants.BODY_SIZE);
         g.setColor(c);
         g.fillRect(x,y,Constants.BODY_SIZE,Constants.BODY_SIZE);
     }

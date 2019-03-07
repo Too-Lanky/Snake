@@ -1,4 +1,6 @@
-package board;
+package render;
+
+import constants.Constants;
 
 import java.awt.*;
 
@@ -27,7 +29,7 @@ public class Food {
     }
 
     public void draw(Graphics g, Color c, int x, int y){
-        g.drawRect(x,y,Constants.BODY_SIZE,Constants.BODY_SIZE);
+        g.drawRect(x,y, Constants.BODY_SIZE,Constants.BODY_SIZE);
         g.setColor(c);
         g.fillRect(x,y,Constants.BODY_SIZE,Constants.BODY_SIZE);
     }

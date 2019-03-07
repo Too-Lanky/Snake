@@ -1,4 +1,6 @@
-package board;
+package input;
+
+import constants.Constants;
 
 import javax.swing.*;
 

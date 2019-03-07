@@ -1,4 +1,4 @@
-package board;
+package render;
 
 public class BodyPart {
     int x;
