@@ -1,10 +1,10 @@
 package board;
 
-public class BodyParts {
+public class BodyPart {
     int x;
     int y;
 
-    BodyParts(int x, int y){
+    BodyPart(int x, int y){
         this.x = x;
         this.y = y;
     }

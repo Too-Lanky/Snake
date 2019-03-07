@@ -29,7 +29,7 @@ public class Board extends JPanel {
         food.draw(this.getGraphics(), Color.RED, food.getX(),food.getY());
     }
 
-    public boolean numNumNum(BodyParts bodyPart, Food food){
+    public boolean numNumNum(BodyPart bodyPart, Food food){
         if(bodyPart.getX() == food.getX() && bodyPart.getY() == food.getY()){
             return true;
         }else
