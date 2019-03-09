@@ -13,8 +13,10 @@ public class Session extends KeyAdapter implements ActionListener {
     private Direction direction = Direction.UP;
     private boolean session = true;
     private boolean paused = false;
+    private JFrame jFrame;
 
     Session(JFrame jFrame){
+        this.jFrame = jFrame;
         jFrame.add(board);
         jFrame.addKeyListener(this);
         board.repaint();
@@ -47,8 +49,18 @@ public class Session extends KeyAdapter implements ActionListener {
             direction = Direction.DOWN;
         } else if (key == KeyEvent.VK_P){
             paused = !paused;
+        /*TODO
+        this could be cleaned up by simply removing the controls from the session and making a new session whenever enter is clicked
+        now i have to lazely reset the variables
+        */
         }else if (key == KeyEvent.VK_ENTER){
+            jFrame.remove(board);
             board = new Board();
+            jFrame.add(board);
+            jFrame.revalidate();
+            paused = false;
+            session = true;
+            direction = Direction.UP;
         }
     }
 }

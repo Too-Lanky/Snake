@@ -22,7 +22,15 @@ public class Board extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        snake.draw(g, Color.GREEN, snake.getHead().getX(),snake.getHead().getY());
+        for (BodyPart bodypart : snake.getBody()) {
+            System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
+            if (bodypart.equals(snake.getHead())) {
+                snake.draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
+            }else {
+                snake.draw(g, Color.ORANGE, bodypart.getX(), bodypart.getY());
+            }
+        }
+        food.draw(g, Color.RED, food.getX(),food.getY());
     }
 
     public boolean update(Direction direction) {
