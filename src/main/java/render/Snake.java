@@ -37,8 +37,8 @@ public class Snake {
         }
 
         for (BodyPart bodypart : body) {
-            System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
-            if (bodypart.equals(body.peekFirst())) {
+            if (bodypart.equals(getHead())) {
+                System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
                 draw(g, Color.GREEN, bodypart.getX(), bodypart.getY());
             }else {
                 draw(g, Color.ORANGE, bodypart.getX(), bodypart.getY());
