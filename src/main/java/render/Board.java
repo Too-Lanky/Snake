@@ -22,6 +22,7 @@ public class Board extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         for (BodyPart bodypart : snake.getBody()) {
             System.out.println("("+bodypart.getX()+","+bodypart.getY()+")");
             if (bodypart.equals(snake.getHead())) {
@@ -31,12 +32,18 @@ public class Board extends JPanel {
             }
         }
         food.draw(g, Color.RED, food.getX(),food.getY());
+
     }
 
     public boolean update(Direction direction) {
         super.paintComponent(this.getGraphics());
-        if(collision(snake)) return false;
-        if(numNumNum(snake.getHead(),food)) snake.grow(snake.getHead());
+
+        if(collision(snake)) {
+            return false;
+        }
+        if(numNumNum(snake.getHead(),food)) {
+            snake.grow(snake.getHead());
+        }
         snake.move(direction,this.getGraphics());
         food.draw(this.getGraphics(), Color.RED, food.getX(),food.getY());
         return true;
@@ -63,5 +70,15 @@ public class Board extends JPanel {
             }
         }
         return false;
+    }
+
+    public void gameOver(Graphics g){
+        super.paintComponent(g);
+        String gameOver = "Press Enter to start";
+        Font font = new Font("Verdana", Font.BOLD, 18);
+        g.setColor(Color.GREEN);
+        g.setFont(font);
+        //TODO
+        g.drawString(gameOver,Constants.BOARD_WIDTH/3-gameOver.length()+1,Constants.BOARD_HEIGHT/2);
     }
 }

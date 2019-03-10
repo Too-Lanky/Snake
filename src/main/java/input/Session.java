@@ -33,7 +33,8 @@ public class Session extends KeyAdapter implements ActionListener {
                 board.repaint();
             }else
                 session = board.update(direction);
-        }
+        }else
+            board.gameOver(board.getGraphics());
     }
 
     @Override

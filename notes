@@ -1,1 +1,1 @@
-use a tree set for move alogrithem?
+seperate snake and food into own components so that the board isnt doing all the heaving lifting
